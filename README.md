@@ -33,9 +33,9 @@ ShadCN/UI — Componentes modernos e acessíveis para interfaces elegantes
 
 👨‍💻 Desenvolvido pelos alunos da Unicesumar:
 
-Pedro Eduardo Colombo da Silva
+👉 [Pedro Eduardo Colombo da Silva](https://www.linkedin.com/in/pedro-eduardo-colombo-da-silva-198602201/)
 
-Gustavo Pereira Pontes
+👉 [Gustavo Pereira Pontes](https://www.linkedin.com/in/gustavo-pereira-pontes-66b02b253/)
 
 🏆 Sobre o Hackathon: <br/>
 Este projeto foi desenvolvido durante o Hackathon de Inovação e Tecnologia, uma iniciativa promovida pela Google Cloud em parceria com a Unicesumar.
