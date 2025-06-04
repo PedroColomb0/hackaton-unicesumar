@@ -46,7 +46,7 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] bg-white">
         <DialogHeader>
           <DialogTitle>Adicionar Novo Dispositivo</DialogTitle>
           <DialogDescription>Preencha os detalhes do dispositivo que deseja monitorar.</DialogDescription>
