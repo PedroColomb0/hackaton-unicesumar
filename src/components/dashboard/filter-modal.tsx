@@ -58,12 +58,15 @@ export default function FilterModal({
             <Label htmlFor="filter-type" className="text-sm font-medium text-gray-700">
               Filtrar por Tipo
             </Label>
-            <Select value={filterType || ""} onValueChange={(value) => setFilterType(value || null)}>
+            <Select
+              value={filterType || "all"}
+              onValueChange={(value) => setFilterType(value === "all" ? null : value)}
+            >
               <SelectTrigger className="border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
                 <SelectValue placeholder="Selecione um tipo" />
               </SelectTrigger>
               <SelectContent className="bg-white border border-gray-200 shadow-lg">
-                <SelectItem value="" className="hover:bg-gray-50">
+                <SelectItem value="all" className="hover:bg-gray-50">
                   Todos os tipos
                 </SelectItem>
                 {deviceTypes.map((type) => (
@@ -79,12 +82,15 @@ export default function FilterModal({
             <Label htmlFor="filter-location" className="text-sm font-medium text-gray-700">
               Filtrar por Local
             </Label>
-            <Select value={filterLocation || ""} onValueChange={(value) => setFilterLocation(value || null)}>
+            <Select
+              value={filterLocation || "all"}
+              onValueChange={(value) => setFilterLocation(value === "all" ? null : value)}
+            >
               <SelectTrigger className="border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
                 <SelectValue placeholder="Selecione um local" />
               </SelectTrigger>
               <SelectContent className="bg-white border border-gray-200 shadow-lg">
-                <SelectItem value="" className="hover:bg-gray-50">
+                <SelectItem value="all" className="hover:bg-gray-50">
                   Todos os locais
                 </SelectItem>
                 {locations.map((location) => (

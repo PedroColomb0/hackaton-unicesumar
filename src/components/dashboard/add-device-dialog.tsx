@@ -48,33 +48,41 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] bg-white">
         <DialogHeader>
-          <DialogTitle>Adicionar Novo Dispositivo</DialogTitle>
-          <DialogDescription>Preencha os detalhes do dispositivo que deseja monitorar.</DialogDescription>
+          <DialogTitle className="text-gray-900">Adicionar Novo Dispositivo</DialogTitle>
+          <DialogDescription className="text-gray-600">
+            Preencha os detalhes do dispositivo que deseja monitorar.
+          </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
+            <Label htmlFor="name" className="text-right text-gray-700">
               Nome*
             </Label>
             <Input
               id="name"
               value={newDevice.name}
               onChange={(e) => setNewDevice({ ...newDevice, name: e.target.value })}
-              className="col-span-3"
+              className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500"
               placeholder="Ex: Smart TV Samsung"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="type" className="text-right">
+            <Label htmlFor="type" className="text-right text-gray-700">
               Tipo*
             </Label>
-            <Select value={newDevice.type} onValueChange={(value) => setNewDevice({ ...newDevice, type: value })}>
-              <SelectTrigger className="col-span-3">
+            <Select
+              value={newDevice.type || "none"}
+              onValueChange={(value) => setNewDevice({ ...newDevice, type: value === "none" ? "" : value })}
+            >
+              <SelectTrigger className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
                 <SelectValue placeholder="Selecione o tipo" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
+                <SelectItem value="none" className="hover:bg-gray-50">
+                  Selecione o tipo
+                </SelectItem>
                 {deviceTypes.map((type) => (
-                  <SelectItem key={type} value={type}>
+                  <SelectItem key={type} value={type} className="hover:bg-gray-50">
                     {type}
                   </SelectItem>
                 ))}
@@ -82,19 +90,22 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
             </Select>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="location" className="text-right">
+            <Label htmlFor="location" className="text-right text-gray-700">
               Local*
             </Label>
             <Select
-              value={newDevice.location}
-              onValueChange={(value) => setNewDevice({ ...newDevice, location: value })}
+              value={newDevice.location || "none"}
+              onValueChange={(value) => setNewDevice({ ...newDevice, location: value === "none" ? "" : value })}
             >
-              <SelectTrigger className="col-span-3">
+              <SelectTrigger className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
                 <SelectValue placeholder="Selecione o local" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
+                <SelectItem value="none" className="hover:bg-gray-50">
+                  Selecione o local
+                </SelectItem>
                 {locations.map((location) => (
-                  <SelectItem key={location} value={location}>
+                  <SelectItem key={location} value={location} className="hover:bg-gray-50">
                     {location}
                   </SelectItem>
                 ))}
@@ -102,7 +113,7 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
             </Select>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="power" className="text-right">
+            <Label htmlFor="power" className="text-right text-gray-700">
               Potência (W)
             </Label>
             <Input
@@ -110,12 +121,12 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
               type="number"
               value={newDevice.currentPower || ""}
               onChange={(e) => setNewDevice({ ...newDevice, currentPower: Number(e.target.value) })}
-              className="col-span-3"
+              className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500"
               placeholder="Ex: 100"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="average" className="text-right">
+            <Label htmlFor="average" className="text-right text-gray-700">
               Média (W)
             </Label>
             <Input
@@ -123,36 +134,46 @@ export default function AddDeviceDialog({ isOpen, onOpenChange, onAddDevice }: A
               type="number"
               value={newDevice.averagePower || ""}
               onChange={(e) => setNewDevice({ ...newDevice, averagePower: Number(e.target.value) })}
-              className="col-span-3"
+              className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500"
               placeholder="Potência média do dispositivo"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="status" className="text-right">
+            <Label htmlFor="status" className="text-right text-gray-700">
               Status
             </Label>
             <Select
-              value={newDevice.status}
+              value={newDevice.status || "online"}
               onValueChange={(value) =>
                 setNewDevice({ ...newDevice, status: value as "online" | "offline" | "standby" })
               }
             >
-              <SelectTrigger className="col-span-3">
+              <SelectTrigger className="col-span-3 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
                 <SelectValue placeholder="Selecione o status" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="online">Ativo</SelectItem>
-                <SelectItem value="standby">Em Standby</SelectItem>
-                <SelectItem value="offline">Desconectado</SelectItem>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
+                <SelectItem value="online" className="hover:bg-gray-50">
+                  Ativo
+                </SelectItem>
+                <SelectItem value="standby" className="hover:bg-gray-50">
+                  Em Standby
+                </SelectItem>
+                <SelectItem value="offline" className="hover:bg-gray-50">
+                  Desconectado
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+        <DialogFooter className="bg-gray-50 border-t border-gray-200">
+          <Button
+            variant="outline"
+            onClick={() => onOpenChange(false)}
+            className="border-gray-300 text-gray-700 hover:bg-gray-100"
+          >
             Cancelar
           </Button>
-          <Button onClick={handleSubmit} className="bg-emerald-600 hover:bg-emerald-700">
+          <Button onClick={handleSubmit} className="bg-emerald-600 hover:bg-emerald-700 text-white">
             Adicionar Dispositivo
           </Button>
         </DialogFooter>
