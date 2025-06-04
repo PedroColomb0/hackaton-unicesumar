@@ -37,12 +37,12 @@ Pedro Eduardo Colombo da Silva
 
 Gustavo Pereira Pontes
 
-🏆 Sobre o Hackathon
+🏆 Sobre o Hackathon: <br/>
 Este projeto foi desenvolvido durante o Hackathon de Inovação e Tecnologia, uma iniciativa promovida pela Google Cloud em parceria com a Unicesumar.
 
 Foi uma oportunidade incrível de aprender, inovar e aplicar soluções reais com foco em IoT, inteligência artificial e computação em nuvem.
 
-🙌 Agradecimento
+🙌 Agradecimento: <br/>
 Agradecemos pela oportunidade de participar deste evento.
 Foi uma experiência enriquecedora que nos motivou a ir além e desenvolver algo com propósito.
 
