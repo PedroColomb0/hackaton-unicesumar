@@ -32,65 +32,79 @@ export default function DevicesList({ filteredDevices, onDeviceClick, costPerKwh
   }
 
   return (
-    <div className="grid gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredDevices.map((device) => (
         <Card
           key={device.id}
-          className="hover:shadow-md transition-shadow cursor-pointer border-none shadow-sm bg-white"
-          onClick={() => onDeviceClick(device)}
+          className="h-64 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 border-none shadow-sm bg-white"
+          onClick={() => {
+            onDeviceClick(device)
+            // Scroll suave para a seção de detalhes
+            setTimeout(() => {
+              const detailsElement = document.getElementById("device-details")
+              if (detailsElement) {
+                detailsElement.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
+                })
+              }
+            }, 100)
+          }}
         >
-          <CardContent className="p-6">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-              <div className="flex items-center space-x-4">
-                <div className={`w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center`}>
-                  {(() => {
-                    const IconComponent = getDeviceIcon(device.type)
-                    return <IconComponent className="h-5 w-5" />
-                  })()}
-                </div>
-                <div>
-                  <div className="flex items-center space-x-2">
-                    <h3 className="font-semibold text-lg">{device.name}</h3>
-                    <div className={`w-2 h-2 rounded-full ${getStatusColor(device.status)}`}></div>
-                  </div>
-                  <p className="text-sm text-gray-600">
-                    {device.location} • {device.type}
-                  </p>
-                </div>
+          <CardContent className="p-4 flex flex-col h-full">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                {(() => {
+                  const IconComponent = getDeviceIcon(device.type)
+                  return <IconComponent className="h-5 w-5" />
+                })()}
               </div>
-
-              <div className="flex flex-wrap items-center gap-6">
-                <div className="text-center">
-                  <p className="text-2xl font-bold">{device.currentPower}W</p>
-                  <p className="text-xs text-gray-600">{getStatusText(device.status)}</p>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center space-x-2">
+                  <h3 className="font-semibold text-lg truncate">{device.name}</h3>
+                  <div className={`w-2 h-2 rounded-full ${getStatusColor(device.status)}`}></div>
                 </div>
-
-                <div className="text-center">
-                  <p className="text-lg font-semibold">{device.dailyConsumption.toFixed(1)} kWh</p>
-                  <p className="text-xs text-gray-600">Hoje</p>
-                </div>
-
-                <div className="text-center">
-                  <p className="text-lg font-semibold">R$ {(device.monthlyConsumption * costPerKwh).toFixed(2)}</p>
-                  <p className="text-xs text-gray-600">Mês estimado</p>
-                </div>
-
-                <div className="flex flex-wrap gap-1">
-                  {device.isAnomaly && (
-                    <Badge variant="destructive" className="text-xs">
-                      Anomalia
-                    </Badge>
-                  )}
-                  {device.hasPhantomLoad && (
-                    <Badge variant="secondary" className="text-xs bg-amber-100 text-amber-800 hover:bg-amber-200">
-                      Consumo Fantasma
-                    </Badge>
-                  )}
-                </div>
+                <p className="text-sm text-gray-600 truncate">
+                  {device.location} • {device.type}
+                </p>
               </div>
             </div>
 
-            <div className="mt-4">
+            <div className="flex-1 space-y-3">
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div>
+                  <p className="text-xl font-bold">{device.currentPower}W</p>
+                  <p className="text-xs text-gray-600">{getStatusText(device.status)}</p>
+                </div>
+                <div>
+                  <p className="text-lg font-semibold">{device.dailyConsumption.toFixed(1)} kWh</p>
+                  <p className="text-xs text-gray-600">Hoje</p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-lg font-semibold text-emerald-600">
+                  R$ {(device.monthlyConsumption * costPerKwh).toFixed(2)}
+                </p>
+                <p className="text-xs text-gray-600">Mês estimado</p>
+              </div>
+
+              <div className="flex flex-wrap gap-1 justify-center">
+                {device.isAnomaly && (
+                  <Badge variant="destructive" className="text-xs">
+                    Anomalia
+                  </Badge>
+                )}
+                {device.hasPhantomLoad && (
+                  <Badge variant="secondary" className="text-xs bg-amber-100 text-amber-800 hover:bg-amber-200">
+                    Consumo Fantasma
+                  </Badge>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-auto">
               <div className="flex justify-between text-sm text-gray-600 mb-1">
                 <span>Consumo vs Média</span>
                 <span>{((device.currentPower / device.averagePower) * 100).toFixed(0)}%</span>

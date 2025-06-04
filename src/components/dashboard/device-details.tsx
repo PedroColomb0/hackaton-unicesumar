@@ -29,7 +29,7 @@ export default function DeviceDetails({
 
   return (
     <>
-      <Card className="border-0 shadow-lg bg-white">
+      <Card id="device-details" className="border-0 shadow-lg bg-white animate-in slide-in-from-top-2 duration-300">
         <CardHeader className="pb-3 border-b border-gray-200">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
