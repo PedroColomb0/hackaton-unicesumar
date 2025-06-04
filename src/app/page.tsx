@@ -113,8 +113,14 @@ const mockDevices: Device[] = [
 ]
 
 export default function EnergyMonitorDashboard() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [devices, setDevices] = useState<Device[]>(mockDevices)
   const [selectedDevice, setSelectedDevice] = useState<Device | null>(null)
+
+  // Function to handle device selection
+  const handleDeviceClick = (device: Device) => {
+    setSelectedDevice(device)
+  }
 
   // Cálculos gerais
   const totalCurrentPower = devices.reduce((sum, device) => sum + device.currentPower, 0)
@@ -174,6 +180,30 @@ export default function EnergyMonitorDashboard() {
             </div>
           </div>
         </div>
+
+        {/* Selected Device Details */}
+        {selectedDevice && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Detalhes do Dispositivo Selecionado</CardTitle>
+              <CardDescription>{selectedDevice.name}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Localização: {selectedDevice.location}</p>
+              <p>Tipo: {selectedDevice.type}</p>
+              <p>Status: {getStatusText(selectedDevice.status)}</p>
+              <p>Consumo Atual: {selectedDevice.currentPower}W</p>
+              <p>Consumo Diário: {selectedDevice.dailyConsumption.toFixed(1)} kWh</p>
+              <p>Custo Mensal Estimado: R$ {(selectedDevice.monthlyConsumption * costPerKwh).toFixed(2)}</p>
+              <button
+                className="mt-2 text-blue-600 hover:underline"
+                onClick={() => setSelectedDevice(null)}
+              >
+                Fechar
+              </button>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Cards de Resumo */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -262,7 +292,11 @@ export default function EnergyMonitorDashboard() {
           <TabsContent value="devices" className="space-y-4">
             <div className="grid gap-4">
               {devices.map((device) => (
-                <Card key={device.id} className="hover:shadow-md transition-shadow">
+                <Card
+                  key={device.id}
+                  className="hover:shadow-md transition-shadow cursor-pointer"
+                  onClick={() => handleDeviceClick(device)}
+                >
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
