@@ -1,6 +1,6 @@
 # ⚡ Dashboard de Monitoramento Energético
 
-👉 [Acesse o projeto online via Vercel]([https://seu-link.vercel.app](https://hackaton-unicesumar.vercel.app/))
+👉 [Acesse o projeto online via Vercel]([https://hackaton-unicesumar.vercel.app]))
 
 Aplicação desenvolvida para visualização e acompanhamento de dados energéticos, com foco em dispositivos IoT. Interface moderna, responsiva e pensada para facilitar o entendimento e a tomada de decisões.
 
