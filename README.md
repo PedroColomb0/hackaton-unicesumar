@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚡ Dashboard de Monitoramento Energético
 
-## Getting Started
+👉 [Acesse o projeto online via Vercel](https://hackaton-unicesumar.vercel.app)
 
-First, run the development server:
+Aplicação desenvolvida para visualização e acompanhamento de dados energéticos, com foco em dispositivos IoT. Interface moderna, responsiva e pensada para facilitar o entendimento e a tomada de decisões.
+
+---
+
+## 🧭 Como executar o projeto
+
+Siga os passos abaixo para rodar o projeto localmente:
 
 ```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/seu-repositorio.git
+
+# Acesse a pasta do projeto
+cd seu-repositorio
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+````
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🚀 Tecnologias utilizadas
+Next.js — Framework React focado em performance e boas práticas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tailwind CSS — Utilitário de estilização rápida e eficiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ShadCN/UI — Componentes modernos e acessíveis para interfaces elegantes
 
-## Learn More
+👨‍💻 Desenvolvido pelos alunos da Unicesumar:
 
-To learn more about Next.js, take a look at the following resources:
+👉 [Pedro Eduardo Colombo da Silva](https://www.linkedin.com/in/pedro-eduardo-colombo-da-silva-198602201/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👉 [Gustavo Pereira Pontes](https://www.linkedin.com/in/gustavo-pereira-pontes-66b02b253/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🏆 Sobre o Hackathon: <br/>
+Este projeto foi desenvolvido durante o Hackathon de Inovação e Tecnologia, uma iniciativa promovida pela Google Cloud em parceria com a Unicesumar.
 
-## Deploy on Vercel
+Foi uma oportunidade incrível de aprender, inovar e aplicar soluções reais com foco em IoT, inteligência artificial e computação em nuvem.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🙌 Agradecimento: <br/>
+Agradecemos pela oportunidade de participar deste evento.
+Foi uma experiência enriquecedora que nos motivou a ir além e desenvolver algo com propósito.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Muito obrigado! 🚀
