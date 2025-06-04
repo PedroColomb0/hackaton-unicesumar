@@ -31,8 +31,7 @@ Tailwind CSS — Utilitário de estilização rápida e eficiente
 
 ShadCN/UI — Componentes modernos e acessíveis para interfaces elegantes
 
-👨‍💻 Desenvolvido por
-Projeto criado com dedicação pelos alunos da Unicesumar:
+👨‍💻 Desenvolvido pelos alunos da Unicesumar:
 
 Pedro Eduardo Colombo da Silva
 
